@@ -1,9 +1,8 @@
-using Soenneker.Tests.Unit;
 using Xunit;
 
 namespace Soenneker.Extensions.Array.Object.Tests;
 
-public class ObjectArrayExtensionTests : UnitTest
+public class ObjectArrayExtensionTests
 {
     [Fact]
     public void Default()
