@@ -14,13 +14,12 @@ public static class ObjectArrayExtension
     /// <returns>An array of Type objects representing the types of the input objects.</returns>
     public static Type[] ToTypes(this object[] objects)
     {
-        ReadOnlySpan<object> span = objects;
+        int length = objects.Length; 
+        var parameterTypes = new Type[length];
 
-        var parameterTypes = new Type[span.Length];
-
-        for (var i = 0; i < span.Length; i++)
+        for (var i = 0; i < length; i++)
         {
-            parameterTypes[i] = span[i].GetType();
+            parameterTypes[i] = objects[i].GetType();
         }
 
         return parameterTypes;
