@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics.Contracts;
+using System.Runtime.CompilerServices;
 
 namespace Soenneker.Extensions.Array.Object;
 
@@ -12,9 +14,10 @@ public static class ObjectArrayExtension
     /// </summary>
     /// <param name="objects">The array of objects to convert.</param>
     /// <returns>An array of Type objects representing the types of the input objects.</returns>
+    [Pure, MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Type[] ToTypes(this object[] objects)
     {
-        int length = objects.Length; 
+        int length = objects.Length;
         var parameterTypes = new Type[length];
 
         for (var i = 0; i < length; i++)
