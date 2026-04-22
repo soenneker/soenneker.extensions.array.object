@@ -1,10 +1,9 @@
-using Xunit;
 
 namespace Soenneker.Extensions.Array.Object.Tests;
 
 public class ObjectArrayExtensionTests
 {
-    [Fact]
+    [Test]
     public void Default()
     {
 
