@@ -13,10 +13,5 @@
     <ItemGroup>
         <ProjectReference Include="..\..\src\Soenneker.Extensions.Array.Object\Soenneker.Extensions.Array.Object.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-        <Content Include="testconfig.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-    </ItemGroup>
 </Project>
+
