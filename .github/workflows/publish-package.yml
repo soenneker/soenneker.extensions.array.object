@@ -56,7 +56,7 @@ jobs:
         run: dotnet build test/Soenneker.Extensions.Array.Object.Tests/Soenneker.Extensions.Array.Object.Tests.csproj --configuration Release --no-restore --verbosity minimal
 
       - name: Test
-        run: dotnet test test/Soenneker.Extensions.Array.Object.Tests/Soenneker.Extensions.Array.Object.Tests.csproj --configuration Release --no-build --no-restore --verbosity normal
+        run: dotnet test --project test/Soenneker.Extensions.Array.Object.Tests/Soenneker.Extensions.Array.Object.Tests.csproj --configuration Release --no-build --no-restore --verbosity normal
 
       - name: Restore library
         run: dotnet restore src/Soenneker.Extensions.Array.Object/Soenneker.Extensions.Array.Object.csproj --verbosity minimal
