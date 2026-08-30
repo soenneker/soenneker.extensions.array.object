@@ -5,7 +5,7 @@
 
 # ![](https://user-images.githubusercontent.com/4441470/224455560-91ed3ee7-f510-4041-a8d2-3fc093025112.png) Soenneker.Extensions.Array.Object
 
-A collection of helpful object[] extension methods.
+Returns the runtime `Type` of each element in an `object[]` while preserving array order.
 
 ## Installation
 
@@ -13,15 +13,24 @@ A collection of helpful object[] extension methods.
 dotnet add package Soenneker.Extensions.Array.Object
 ```
 
-## Quick start
+## Usage
 
 ```csharp
 using Soenneker.Extensions.Array.Object;
 
-// Given an existing object[] named objects:
-var result = objects.ToTypes();
+object[] values = ["hello", 42, DateTimeOffset.UtcNow];
+
+Type[] types = values.ToTypes();
+
+// types[0] == typeof(string)
+// types[1] == typeof(int)
+// types[2] == typeof(DateTimeOffset)
 ```
 
-## Common operations
+`ToTypes()` returns the actual runtime type from `GetType()`, not a variable's declared type. Value types stored in the array are boxed and still produce their underlying value type. Derived instances produce the derived type.
 
-- `ToTypes()` - Converts an array of objects to an array of their corresponding types. Returns an array of Type objects representing the types of the input objects.
+The returned `Type[]` is newly allocated for a non-empty input and has the same length and ordering as the source. An empty array produces an empty result.
+
+Every element must be non-null; a null element causes `NullReferenceException` because null has no runtime type. If null is valid in the source data, filter it or choose an explicit placeholder type before calling this method.
+
+Runtime types are useful for reflection dispatch, but exact types may not match an API that expects an interface, base class, or nullable wrapper. Perform assignability checks when using the result for method or constructor selection.
